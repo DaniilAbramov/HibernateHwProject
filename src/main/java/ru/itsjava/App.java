@@ -18,7 +18,7 @@ public class App {
 
         System.out.println("mike.getName() = " + mike.getName());
         UserDao userDao = context.getBean(UserDao.class);
-        
+//        System.out.println("userDao.count() = " + userDao.count());
 
     }
 }

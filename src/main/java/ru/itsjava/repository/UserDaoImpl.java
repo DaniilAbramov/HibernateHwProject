@@ -14,14 +14,8 @@ public class UserDaoImpl implements UserDao {
 
 
 //    @Override
-//    public void count(User user) {
-//        int count = 0;
-//        while (user == null) {
-//            if (user.getId() != 0) {
-//                count++;
-//            }
-//        }
-//        System.out.println(count);
+//    public int count() {
+//        return entityManager.createQuery("select count(*) from User",Integer.class);
 //    }
 
     @Override

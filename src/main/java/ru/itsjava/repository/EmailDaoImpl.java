@@ -1,6 +1,7 @@
 package ru.itsjava.repository;
 
 import org.springframework.stereotype.Repository;
+
 import ru.itsjava.domain.Email;
 import ru.itsjava.domain.Pet;
 
@@ -12,7 +13,6 @@ import java.util.Optional;
 public class EmailDaoImpl implements EmailDao {
     @PersistenceContext
     private EntityManager entityManager;
-
 
     @Override
     public Email insert(Email email) {
