@@ -13,9 +13,13 @@ import ru.itsjava.repository.EmailDao;
 import ru.itsjava.repository.PetDao;
 import ru.itsjava.repository.UserDao;
 
+import javax.persistence.EntityManager;
+
 @AllArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
+
+    private  final EntityManager entityManager;
 
     private final UserDao userDao;
     private final EmailDao emailDao;
@@ -40,7 +44,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void getAllUser(User user, Pet pet, Email email) {
-//        userDao.
+    public void getAllUser() {
+        System.out.println(entityManager.createQuery("SELECT User FROM User "));
     }
 }

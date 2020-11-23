@@ -15,14 +15,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "Name")
+    @JoinColumn(name = "Name")
     private String name;
 
-    @Column(name = "User_Email")
+    @JoinColumn(name = "User_Email")
     @OneToOne(targetEntity = Email.class, cascade = CascadeType.ALL)
     private Email email;
 
-    @Column(name = "User_Pet")
+    @JoinColumn(name = "User_Pet")
     @OneToOne(targetEntity = Pet.class, cascade = CascadeType.ALL)
     private Pet pet;
 
