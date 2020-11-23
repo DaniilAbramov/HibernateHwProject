@@ -22,10 +22,12 @@ public class App {
 
 
         System.out.println("mike.getName() = " + mike.getName());
-        UserService userDao = context.getBean(UserService.class);
-//        System.out.println("userDao.count() = " + userDao.count());
-        userDao.createUser(mike);
-        userDao.createUser(joe);
-        userDao.getAllUser();
+        UserService userService = context.getBean(UserService.class);
+        UserDao userDao = context.getBean(UserDao.class);
+        userService.createUser(mike);
+        userService.createUser(joe);
+        System.out.println(userDao.count());
+        System.out.println(userService.getAllUser());
+
     }
 }

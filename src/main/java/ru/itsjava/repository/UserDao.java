@@ -5,7 +5,7 @@ import ru.itsjava.domain.User;
 import java.util.Optional;
 
 public interface UserDao {
-//    int count();
+    int count();
 
     User insert(User user);
 

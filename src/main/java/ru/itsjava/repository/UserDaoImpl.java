@@ -5,6 +5,7 @@ import ru.itsjava.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.Optional;
 
 @Repository
@@ -13,10 +14,11 @@ public class UserDaoImpl implements UserDao {
     private EntityManager entityManager;
 
 
-//    @Override
-//    public int count() {
-//        return entityManager.createQuery("select count(*) from User",Integer.class);
-//    }
+    @Override
+    public int count() {
+        TypedQuery<User> query = entityManager.createQuery("select u from User u", User.class);
+        return query.getResultList().size();
+    }
 
     @Override
     public User insert(User user) {

@@ -6,20 +6,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.itsjava.domain.Email;
-import ru.itsjava.domain.Pet;
 import ru.itsjava.domain.User;
 import ru.itsjava.repository.EmailDao;
 import ru.itsjava.repository.PetDao;
 import ru.itsjava.repository.UserDao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 @AllArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
 
-    private  final EntityManager entityManager;
+    private final EntityManager entityManager;
 
     private final UserDao userDao;
     private final EmailDao emailDao;
@@ -44,7 +44,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void getAllUser() {
-        System.out.println(entityManager.createQuery("SELECT User FROM User "));
+    public List<User> getAllUser() {
+        TypedQuery<User> query = entityManager.createQuery("select u from User u", User.class);
+        return query.getResultList();
     }
 }
