@@ -6,7 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ru.itsjava.domain.Email;
+import ru.itsjava.domain.Pet;
 import ru.itsjava.domain.User;
+import ru.itsjava.repository.EmailDao;
+import ru.itsjava.repository.PetDao;
 import ru.itsjava.repository.UserDao;
 
 @AllArgsConstructor
@@ -14,6 +18,8 @@ import ru.itsjava.repository.UserDao;
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
+    private final EmailDao emailDao;
+    private final PetDao petDao;
 
     @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED)
     @Override
@@ -31,5 +37,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(long id) {
         userDao.deleteById(id);
+    }
+
+    @Override
+    public void getAllUser(User user, Pet pet, Email email) {
+//        userDao.
     }
 }

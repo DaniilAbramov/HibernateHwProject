@@ -32,6 +32,5 @@ public class EmailDaoImpl implements EmailDao {
     public void deleteById(long id) {
         Pet deletePet = entityManager.find(Pet.class, id);
         entityManager.remove(deletePet);
-        System.out.println("Delete completed");
     }
 }
