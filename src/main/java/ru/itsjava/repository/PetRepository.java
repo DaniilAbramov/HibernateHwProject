@@ -4,7 +4,7 @@ import ru.itsjava.domain.Pet;
 
 import java.util.Optional;
 
-public interface PetDao {
+public interface PetRepository {
 
     Pet insert(Pet pet);
 

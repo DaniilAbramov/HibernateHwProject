@@ -4,7 +4,7 @@ import ru.itsjava.domain.Email;
 
 import java.util.Optional;
 
-public interface EmailDao {
+public interface EmailRepository {
     Email insert(Email email);
 
     Optional<Email> getById(long id);

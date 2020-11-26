@@ -6,10 +6,11 @@ import ru.itsjava.domain.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class UserDaoImpl implements UserDao {
+public class UserRepositoryImpl implements UserRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -38,6 +39,12 @@ public class UserDaoImpl implements UserDao {
     public void deleteById(long id) {
         User deleteUser = entityManager.find(User.class, id);
         entityManager.remove(deleteUser);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        TypedQuery<User> query = entityManager.createQuery("select u from User u", User.class);
+        return query.getResultList();
     }
 
 

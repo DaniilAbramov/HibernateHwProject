@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ru.itsjava.domain.Email;
 import ru.itsjava.domain.Pet;
 import ru.itsjava.domain.User;
-import ru.itsjava.repository.UserDao;
+import ru.itsjava.repository.UserRepository;
 import ru.itsjava.service.UserService;
 
 @SpringBootApplication
@@ -23,10 +23,10 @@ public class App {
 
         System.out.println("mike.getName() = " + mike.getName());
         UserService userService = context.getBean(UserService.class);
-        UserDao userDao = context.getBean(UserDao.class);
+        UserRepository userRepository = context.getBean(UserRepository.class);
         userService.createUser(mike);
         userService.createUser(joe);
-        System.out.println(userDao.count());
+        System.out.println(userRepository.count());
         System.out.println(userService.getAllUser());
 
     }

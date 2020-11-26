@@ -1,8 +1,6 @@
 package ru.itsjava.repository;
 
 import org.springframework.stereotype.Repository;
-
-import ru.itsjava.domain.Email;
 import ru.itsjava.domain.Pet;
 
 import javax.persistence.EntityManager;
@@ -10,22 +8,22 @@ import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
 @Repository
-public class EmailDaoImpl implements EmailDao {
+public class PetRepositoryImpl implements PetRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public Email insert(Email email) {
-        if (email.getId() == 0L) {
-            entityManager.persist(email);
-            return email;
+    public Pet insert(Pet pet) {
+        if (pet.getId() == 0L) {
+            entityManager.persist(pet);
+            return pet;
         }
-        return entityManager.merge(email);
+        return entityManager.merge(pet);
     }
 
     @Override
-    public Optional<Email> getById(long id) {
-        return Optional.ofNullable(entityManager.find(Email.class, id));
+    public Optional<Pet> getById(long id) {
+        return Optional.ofNullable(entityManager.find(Pet.class, id));
     }
 
     @Override
