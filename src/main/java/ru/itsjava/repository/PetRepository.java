@@ -2,6 +2,7 @@ package ru.itsjava.repository;
 
 import ru.itsjava.domain.Pet;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface PetRepository {
@@ -11,4 +12,6 @@ public interface PetRepository {
     Optional<Pet> getById(long id);
 
     void deleteById(long id);
+
+    List<Pet> getAllPet();
 }

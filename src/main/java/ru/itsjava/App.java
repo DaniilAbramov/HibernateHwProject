@@ -13,12 +13,12 @@ public class App {
 
     public static void main(String[] args) {
         var context = SpringApplication.run(App.class);
-        Email mikeEmail = new Email(1L, "mike@mail.ru");
-        Pet mikePet = new Pet(1L, "Snake");
-        User mike = new User(1L, "Mike", mikeEmail, mikePet);
-        Email joeEmail = new Email(2L, "joe@mail.ru");
-        Pet joePet = new Pet(2L, "Dog");
-        User joe = new User(2L, "Joe", joeEmail, joePet);
+        Email mikeEmail = new Email(4L, "mike@mail.ru");
+        Pet mikePet = new Pet(4L, "Snake");
+        User mike = new User(4L, "Mike", mikeEmail, mikePet);
+        Email joeEmail = new Email(5L, "joe@mail.ru");
+        Pet joePet = new Pet(5L, "Dog");
+        User joe = new User(5L, "Joe", joeEmail, joePet);
 
 
         System.out.println("mike.getName() = " + mike.getName());
@@ -28,6 +28,7 @@ public class App {
         userService.createUser(joe);
         System.out.println(userRepository.count());
         System.out.println(userService.getAllUser());
+        context.getBean(UserService.class).printUserById(4L);
 
     }
 }

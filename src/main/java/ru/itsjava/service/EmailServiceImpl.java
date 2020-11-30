@@ -6,17 +6,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ru.itsjava.domain.Email;
 import ru.itsjava.repository.EmailRepository;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Service
 public class EmailServiceImpl implements EmailService {
     private final EmailRepository emailRepository;
 
-    @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(readOnly = true)
     @Override
-    public void printById(long id) {
-        System.out.println(emailRepository.getById(id));
+    public Email printById(long id) {
+        return emailRepository.getById(id).get();
+    }
+    @Transactional(readOnly = true)
+    @Override
+    public List<Email> getAllEmail() {
+        return emailRepository.getAllEmail();
     }
 
 }

@@ -3,8 +3,6 @@ package ru.itsjava.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itsjava.domain.User;
 import ru.itsjava.repository.UserRepository;
@@ -17,24 +15,25 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED)
+    @Transactional
     @Override
     public void createUser(User user) {
         userRepository.insert(user);
     }
 
-    @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(readOnly = true)
     @Override
-    public void printUserById(long id) {
-        System.out.println(userRepository.getById(id));
+    public User printUserById(long id) {
+        return userRepository.getById(id).get();
     }
 
-    @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED)
+    @Transactional
     @Override
     public void deleteUserById(long id) {
         userRepository.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<User> getAllUser() {
         return userRepository.getAllUser();

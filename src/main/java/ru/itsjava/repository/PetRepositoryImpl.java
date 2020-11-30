@@ -2,9 +2,12 @@ package ru.itsjava.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.itsjava.domain.Pet;
+import ru.itsjava.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -30,5 +33,11 @@ public class PetRepositoryImpl implements PetRepository {
     public void deleteById(long id) {
         Pet deletePet = entityManager.find(Pet.class, id);
         entityManager.remove(deletePet);
+    }
+
+    @Override
+    public List<Pet> getAllPet() {
+        TypedQuery<Pet> query = entityManager.createQuery("select p from Pet p", Pet.class);
+        return query.getResultList();
     }
 }

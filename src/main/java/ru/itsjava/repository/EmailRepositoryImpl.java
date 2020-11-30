@@ -7,6 +7,8 @@ import ru.itsjava.domain.Pet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -32,5 +34,11 @@ public class EmailRepositoryImpl implements EmailRepository {
     public void deleteById(long id) {
         Pet deletePet = entityManager.find(Pet.class, id);
         entityManager.remove(deletePet);
+    }
+
+    @Override
+    public List<Email> getAllEmail() {
+        TypedQuery<Email> query = entityManager.createQuery("select e from Email e",Email.class);
+        return query.getResultList();
     }
 }
