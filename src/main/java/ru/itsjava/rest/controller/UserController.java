@@ -29,7 +29,7 @@ public class UserController {
 
     @PostMapping("/users/{id}/edit")
     public String editUser(UserDto userDto) {
-        userService.createUser(UserDto.toDomainObject(userDto));
+        userService.save(UserDto.toDomainObject(userDto));
         return "redirect:/";
     }
 }

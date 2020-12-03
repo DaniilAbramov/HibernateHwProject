@@ -47,5 +47,16 @@ public class UserRepositoryImpl implements UserRepository {
         return query.getResultList();
     }
 
+    @Override
+    public User save(User user) {
+        entityManager.persist(user);
+        return user;
+    }
+
+    @Override
+    public void updateUser(User user) {
+        entityManager.merge(user);
+    }
+
 
 }

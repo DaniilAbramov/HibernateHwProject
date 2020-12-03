@@ -38,4 +38,10 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUser() {
         return userRepository.getAllUser();
     }
+
+    @Transactional
+    @Override
+    public void save(User user) {
+        userRepository.updateUser(user);
+    }
 }
