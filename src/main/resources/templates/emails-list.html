@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Pets list</title>
+    <style type="text/css">
+        body {
+            background-color: lemonchiffon;
+            padding: 60px;
+        }
+
+        .users th {
+            border: 3px black;
+            padding: 10px;
+        }
+
+        .users td {
+            border: 2px #000000;
+            padding: 20px;
+        }
+
+        table {
+
+            background: black;
+            border: 2px solid grey;
+            border-bottom: none;
+        }
+
+        TH {
+            background: orange;
+            border: 1px solid black;
+        }
+
+        TD {
+            background: lightcyan;
+            border: 1px solid black;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>Emails:</h1>
+
+<table class="emails">
+
+    <colgroup>
+        <col span="1" style="background: orange">
+        <col style="background-color: lightcyan">
+    </colgroup>
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="email: ${emails}">
+        <td th:text="${email.id}">1</td>
+        <td th:text="${email.email}">Pet</td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

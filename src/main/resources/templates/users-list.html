@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Users list</title>
+    <style type="text/css">
+        body {
+            background-color: lemonchiffon;
+            padding: 60px;
+        }
+
+        .users th {
+            border: 3px black;
+            padding: 10px;
+        }
+
+        .users td {
+            border: 2px #000000;
+            padding: 20px;
+        }
+
+        table {
+            background: black;
+            border: 2px solid grey;
+            border-bottom: none;
+        }
+
+        TH {
+            background: orange;
+            border: 1px solid black;
+        }
+
+        TD {
+            background: lightcyan;
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Users:</h1>
+
+<table class="users">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Pet</th>
+        <th>Email</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.id}">1</td>
+        <td th:text="${user.name}">User</td>
+        <td th:text="${user.pet.nickname}">Nickname</td>
+        <td th:text="${user.email.email}">Email</td>
+
+        <td>
+            <a th:href="@{/users/{id}/edit(id=${user.id})}" href="users-edit.html">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

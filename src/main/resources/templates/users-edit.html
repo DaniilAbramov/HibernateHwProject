@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit user</title>
+    <style>
+        body {
+            background-color: lemonchiffon;
+            padding: 60px;
+        }
+        table{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<form id="edit-form" th:action="@{/users/{id}/edit(id=${userDto.id})}" th:method="post" action="users-edit.html">
+    <h1>User Info:</h1>
+
+    <div class="row">
+        <label for="id-input">ID:</label>
+        <input id="id-input" name="id" type="text" readonly="readonly" th:value="${userDto.id}" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="title-input">Name:</label>
+        <input id="title-input" name="name" type="text" th:value="${userDto.name}" value="Vanya Vanov"/>
+    </div>
+
+    <div class="row">
+        <label for="title-input">Pet:</label>
+        <input id="Pet" name="pet" type="text" th:value="${userDto.pet.nickname}" value="rat"/>
+    </div>
+
+    <div class="row">
+        <label for="authors-input">Email:</label>
+        <input id="authors-input" name="email" type="text" th:value="${userDto.email.email}" value="vanya_rat@mail.ru"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Save</button>
+    </div>
+</form>
