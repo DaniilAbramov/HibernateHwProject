@@ -7,33 +7,72 @@
         body {
             background-color: lemonchiffon;
             padding: 60px;
+            font-family: Roboto, serif;
+
         }
 
         .users th {
             border: 3px black;
             padding: 10px;
+            font-family: Roboto, serif;
+            width: 60px;
+            height: 50px;
+
         }
 
         .users td {
             border: 2px #000000;
             padding: 20px;
+            font-family: Roboto, serif;
+            width: 60px;
+            height: 50px;
+
         }
 
         table {
-
+            width: 90px;
+            height: 90px;
             background: black;
             border: 2px solid grey;
             border-bottom: none;
+            font-family: Roboto, serif;
+
         }
 
         TH {
-            background: orange;
+            background: lightsalmon;
             border: 1px solid black;
+            font-family: Roboto, serif;
+            width: 60px;
+            height: 50px;
+
         }
 
         TD {
             background: lightcyan;
             border: 1px solid black;
+            font-family: Roboto, serif;
+            width: 60px;
+            height: 50px;
+
+        }
+
+        button {
+            border: none;
+            outline: none;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: Roboto, serif;
+            padding: 12px 16px;
+            border-radius: 100px;
+
+            background: plum;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
         }
 
 
@@ -53,6 +92,8 @@
     <tr>
         <th>ID</th>
         <th>Email</th>
+        <th>Edits</th>
+
     </tr>
     </thead>
     <tbody>
@@ -60,7 +101,15 @@
         <td th:text="${email.id}">1</td>
         <td th:text="${email.email}">Pet</td>
 
+        <td>
+            <a th:href="@{/emails/{id}/edit(id=${email.id})}" href="emails-edit.html">Edit</a>
+        </td>
     </tr>
+    <div class="row">
+        <form action="http://localhost:8080" method="GET">
+            <button type="submit">Back</button>
+        </form>
+    </div>
     </tbody>
 </table>
 </body>

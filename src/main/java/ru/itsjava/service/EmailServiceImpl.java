@@ -16,15 +16,27 @@ import java.util.List;
 public class EmailServiceImpl implements EmailService {
     private final EmailRepository emailRepository;
 
+    @Override
+    public void createEmail(Email email) {
+        emailRepository.save(email);
+    }
+
     @Transactional(readOnly = true)
     @Override
     public Email printById(long id) {
         return emailRepository.getById(id).get();
     }
+
     @Transactional(readOnly = true)
     @Override
     public List<Email> getAllEmail() {
         return emailRepository.getAllEmail();
+    }
+
+    @Transactional
+    @Override
+    public void save(Email email) {
+    emailRepository.updateEmail(email);
     }
 
 }

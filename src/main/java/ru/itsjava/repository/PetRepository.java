@@ -7,11 +7,13 @@ import java.util.Optional;
 
 public interface PetRepository {
 
-    Pet insert(Pet pet);
+    Pet save(Pet pet);
 
     Optional<Pet> getById(long id);
 
     void deleteById(long id);
 
     List<Pet> getAllPet();
+
+    void updatePet(Pet pet);
 }

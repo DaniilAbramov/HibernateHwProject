@@ -17,7 +17,7 @@ public class EmailRepositoryImpl implements EmailRepository {
     private EntityManager entityManager;
 
     @Override
-    public Email insert(Email email) {
+    public Email save(Email email) {
         if (email.getId() == 0L) {
             entityManager.persist(email);
             return email;
@@ -38,7 +38,12 @@ public class EmailRepositoryImpl implements EmailRepository {
 
     @Override
     public List<Email> getAllEmail() {
-        TypedQuery<Email> query = entityManager.createQuery("select e from Email e",Email.class);
+        TypedQuery<Email> query = entityManager.createQuery("select e from Email e", Email.class);
         return query.getResultList();
+    }
+
+    @Override
+    public void updateEmail(Email email) {
+        entityManager.merge(email);
     }
 }

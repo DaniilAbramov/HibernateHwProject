@@ -2,7 +2,6 @@ package ru.itsjava.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.itsjava.domain.Pet;
-import ru.itsjava.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +15,7 @@ public class PetRepositoryImpl implements PetRepository {
     private EntityManager entityManager;
 
     @Override
-    public Pet insert(Pet pet) {
+    public Pet save(Pet pet) {
         if (pet.getId() == 0L) {
             entityManager.persist(pet);
             return pet;
@@ -39,5 +38,10 @@ public class PetRepositoryImpl implements PetRepository {
     public List<Pet> getAllPet() {
         TypedQuery<Pet> query = entityManager.createQuery("select p from Pet p", Pet.class);
         return query.getResultList();
+    }
+
+    @Override
+    public void updatePet(Pet pet) {
+        entityManager.merge(pet);
     }
 }
