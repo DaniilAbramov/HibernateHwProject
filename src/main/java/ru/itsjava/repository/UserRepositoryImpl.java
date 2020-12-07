@@ -22,7 +22,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User insert(User user) {
+    public User save(User user) {
         if (user.getId() == 0L) {
             entityManager.persist(user);
             return user;
@@ -45,12 +45,6 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> getAllUser() {
         TypedQuery<User> query = entityManager.createQuery("select u from User u", User.class);
         return query.getResultList();
-    }
-
-    @Override
-    public User save(User user) {
-        entityManager.persist(user);
-        return user;
     }
 
     @Override

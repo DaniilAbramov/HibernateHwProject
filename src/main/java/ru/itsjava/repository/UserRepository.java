@@ -8,15 +8,13 @@ import java.util.Optional;
 public interface UserRepository {
     int count();
 
-    User insert(User user);
+    User save(User user);
 
     Optional<User> getById(long id);
 
     void deleteById(long id);
 
     List<User> getAllUser();
-
-    User save(User user);
 
     void updateUser(User user);
 
